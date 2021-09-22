@@ -9,6 +9,7 @@ psycopg2-binary = "*"
 django-extensions = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
+pylint-django = "*"
 
 [dev-packages]
 
