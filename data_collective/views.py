@@ -20,6 +20,12 @@ class Contributions(generics.ListAPIView):
     def get_queryset(self):
         id = self.kwargs['id']
         return Project.objects.filter(contributor_list__in=id)
+
+class CitizenLogin(generics.ListAPIView):
+    serializer_class = CitizenSerializer
+    def get_queryset(self):
+        username = self.kwargs['username']
+        return Citizen.objects.filter(name=username)
     
 class CitizenDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Citizen.objects.all()
