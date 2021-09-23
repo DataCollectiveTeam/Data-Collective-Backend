@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import Citizen, Project, DataEntry
-from .serializers import CitizenSerializer, ProjectSerializer, DataEntrySerializer
+from .models import Citizen, Project, Form, DataEntry
+from .serializers import CitizenSerializer, ProjectSerializer, FormSerializer, DataEntrySerializer
 
 # View Classes
 class CitizenList(generics.ListCreateAPIView):
@@ -26,3 +26,11 @@ class DataList(generics.ListCreateAPIView):
 class DataDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = DataEntry.objects.all()
     serializer_class = DataEntrySerializer
+
+class FormList(generics.ListCreateAPIView):
+    queryset = Form.objects.all()
+    serializer_class = FormSerializer
+
+class FormDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Form.objects.all()
+    serializer_class = FormSerializer
