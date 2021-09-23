@@ -18,3 +18,11 @@ class ProjectList(generics.ListCreateAPIView):
 class ProjectDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+
+class DataList(generics.ListCreateAPIView):
+    queryset = DataEntry.objects.all()
+    serializer_class = DataEntrySerializer
+
+class DataDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = DataEntry.objects.all()
+    serializer_class = DataEntrySerializer
