@@ -7,6 +7,20 @@ class CitizenList(generics.ListCreateAPIView):
     queryset = Citizen.objects.all()
     serializer_class = CitizenSerializer
 
+class AList(generics.ListAPIView):
+    serializer_class = ProjectSerializer
+
+    def get_queryset(self):
+        id = self.kwargs['id']
+        return Project.objects.filter(admin_list__in=id)
+
+class Contributions(generics.ListAPIView):
+    serializer_class = ProjectSerializer
+
+    def get_queryset(self):
+        id = self.kwargs['id']
+        return Project.objects.filter(contributor_list__in=id)
+    
 class CitizenDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Citizen.objects.all()
     serializer_class = CitizenSerializer
