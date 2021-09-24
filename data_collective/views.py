@@ -54,3 +54,10 @@ class FormList(generics.ListCreateAPIView):
 class FormDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Form.objects.all()
     serializer_class = FormSerializer
+
+class FormGrab(generics.ListAPIView):
+    serializer_class = FormSerializer
+
+    def get_queryset(self):
+        id = self.kwargs['id']
+        return Form.objects.filter(project=id)

@@ -13,4 +13,5 @@ urlpatterns = [
     path('data_entries/<int:pk>', views.DataDetail.as_view(), name='data_detail'),
     path('forms/', views.FormList.as_view(), name='form_list'),
     path('forms/<int:pk>', views.FormDetail.as_view(), name='form_detail'),
+    path('formgrab/<id>', views.FormGrab.as_view(), name='form_grab'),
 ]
