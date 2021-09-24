@@ -10,7 +10,7 @@ urlpatterns = [
     
     path('citizens/', views.CitizenList.as_view(), name='citizen_list'),
     path('citizens/<int:pk>', views.CitizenDetail.as_view(), name='citizen_detail'),
-    path('citizens/login/<username>', views.CitizenLogin.as_view(), name='citizen_login'),
+    path('citizens/login/<str:name>&<str:password>', views.CitizenLogin.as_view(), name='citizen_login'),
     
     path('project_data/<int:id>', views.ProjectData.as_view(), name='project_data'),
 

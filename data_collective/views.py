@@ -1,3 +1,4 @@
+from django.db.models import manager
 from rest_framework import generics
 from .models import Citizen, Project, Form, DataEntry
 from .serializers import CitizenSerializer, ProjectSerializer, FormSerializer, DataEntrySerializer
@@ -23,9 +24,13 @@ class Contributions(generics.ListAPIView):
 
 class CitizenLogin(generics.ListAPIView):
     serializer_class = CitizenSerializer
+    
     def get_queryset(self):
-        username = self.kwargs['username']
-        return Citizen.objects.filter(name=username)
+        name = self.kwargs['name']
+        password = self.kwargs['password']
+        match = Citizen.objects.filter(name=name)
+        if (match[0].password == password):
+            return match
     
 class CitizenDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Citizen.objects.all()
