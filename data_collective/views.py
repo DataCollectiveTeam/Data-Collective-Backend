@@ -39,6 +39,13 @@ class ProjectDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
+class ProjectData(generics.ListAPIView):
+    serializer_class = DataEntrySerializer
+
+    def get_queryset(self):
+        id = self.kwargs['id']
+        return DataEntry.objects.filter(project=id)
+
 class DataList(generics.ListCreateAPIView):
     queryset = DataEntry.objects.all()
     serializer_class = DataEntrySerializer
