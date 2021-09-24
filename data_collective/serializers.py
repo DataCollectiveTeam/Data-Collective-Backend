@@ -9,7 +9,7 @@ class CitizenSerializer(serializers.ModelSerializer):
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ('id', 'name', 'header', 'img', 'creator', 'admin_list', 'contributor_list', 'description',)
+        fields = ('id', 'name', 'header', 'img', 'creator', 'admin_list', 'contributor_list', 'description', 'private', 'active', 'date_created')
 
 class FormSerializer(serializers.ModelSerializer):
     class Meta:
