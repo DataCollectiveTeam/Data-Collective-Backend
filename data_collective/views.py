@@ -1,5 +1,5 @@
 from django.db.models import manager
-from rest_framework import generics
+from rest_framework import filters, generics
 from .models import Citizen, Project, Form, DataEntry
 from .serializers import CitizenSerializer, ProjectSerializer, FormSerializer, DataEntrySerializer
 
@@ -20,7 +20,16 @@ class Contributions(generics.ListAPIView):
 
     def get_queryset(self):
         id = self.kwargs['id']
-        return Project.objects.filter(contributor_list__in=id)
+
+        #  const closeMatch = { "$regex": searchTerm, "$options": "i" };
+        #Post.find( { $or:[ 
+        #  {'username':closeMatch},
+        #  {'title':closeMatch}, 
+        #  {'tags':{$in: [searchTerm]}}, 
+        #  { "body":closeMatch}
+        #]})
+        match = Project.objects.filter(contributor_list__in=id)
+        return match
 
 class CitizenLogin(generics.ListAPIView):
     serializer_class = CitizenSerializer
@@ -37,6 +46,8 @@ class CitizenDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CitizenSerializer
 
 class ProjectList(generics.ListCreateAPIView):
+    search_fields = ['name', 'header', 'description', 'creator__name']
+    filter_backends = (filters.SearchFilter,)
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
