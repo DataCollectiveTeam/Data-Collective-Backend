@@ -77,21 +77,42 @@ class Form(models.Model):
 class DataEntry(models.Model):
     project = ForeignKey(Project, on_delete=models.CASCADE, related_name='data_entries')
     contributor = models.ForeignKey(Citizen, on_delete=models.DO_NOTHING, related_name='entries')
+
     int1 = models.IntegerField(null=True)
     int2 = models.IntegerField(null=True)
     int3 = models.IntegerField(null=True)
     int4 = models.IntegerField(null=True)
+
+    int1_label = models.CharField(max_length=40, default='', blank=True)
+    int2_label = models.CharField(max_length=40, default='', blank=True)
+    int3_label = models.CharField(max_length=40, default='', blank=True)
+    int4_label = models.CharField(max_length=40, default='', blank=True)
+
     float1 = models.FloatField(null=True)
     float2 = models.FloatField(null=True)
     float3 = models.FloatField(null=True)
     float4 = models.FloatField(null=True)
+
+    float1_label = models.CharField(max_length=40, default='', blank=True)
+    float2_label = models.CharField(max_length=40, default='', blank=True)
+    float3_label = models.CharField(max_length=40, default='', blank=True)
+    float4_label = models.CharField(max_length=40, default='', blank=True)
+
     img_url = models.URLField(default='', blank=True)
+    img_label = models.CharField(max_length=40, default='', blank=True)
+
     dropdown1 = models.TextField(default='', blank=True)
     dropdown2 = models.TextField(default='', blank=True)
+
+    dropdown1_label = models.CharField(max_length=40, default='', blank=True)
+    dropdown2_label = models.CharField(max_length=40, default='', blank=True)
+
     notes = models.TextField(default='', blank=True)
+    
     lat = models.DecimalField(null=True, max_digits=9, decimal_places=6)
     lon = models.DecimalField(null=True, max_digits=9, decimal_places=6)
     zipcode = models.IntegerField(null=True)
+
     date_created = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):

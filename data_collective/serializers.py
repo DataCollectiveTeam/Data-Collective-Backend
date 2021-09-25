@@ -19,4 +19,4 @@ class FormSerializer(serializers.ModelSerializer):
 class DataEntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = DataEntry
-        fields = ('id', 'project', 'contributor', 'int1', 'int2', 'int3', 'int4', 'float1', 'float2', 'float3', 'float4', 'img_url', 'dropdown1', 'dropdown2', 'notes', 'lat', 'lon', 'zipcode',)
+        fields = ('id', 'project', 'contributor', 'int1', 'int2', 'int3', 'int4', 'int1_label', 'int2_label', 'int3_label', 'int4_label', 'float1', 'float2', 'float3', 'float4', 'float1_label', 'float2_label', 'float3_label', 'float4_label', 'img_url', 'img_label', 'dropdown1', 'dropdown2', 'dropdown1_label', 'dropdown2_label', 'notes', 'lat', 'lon', 'zipcode',)
