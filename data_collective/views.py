@@ -20,14 +20,6 @@ class Contributions(generics.ListAPIView):
 
     def get_queryset(self):
         id = self.kwargs['id']
-
-        #  const closeMatch = { "$regex": searchTerm, "$options": "i" };
-        #Post.find( { $or:[ 
-        #  {'username':closeMatch},
-        #  {'title':closeMatch}, 
-        #  {'tags':{$in: [searchTerm]}}, 
-        #  { "body":closeMatch}
-        #]})
         match = Project.objects.filter(contributor_list__in=id)
         return match
 
@@ -36,7 +28,7 @@ class CitizenLogin(generics.ListAPIView):
     
     def get_queryset(self):
         name = self.kwargs['name']
-        password = self.request.META['mypassword']
+        password = self.kwargs['password']
 
         match = Citizen.objects.filter(name=name)
         if (match[0].password == password):
