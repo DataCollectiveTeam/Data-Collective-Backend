@@ -117,3 +117,25 @@ class DataEntry(models.Model):
 
     def __str__(self):
         return self.date_created
+
+class DataVis(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='data_visualizations')
+    contributor = models.ForeignKey(Citizen, on_delete=models.DO_NOTHING, related_name='citizen')
+
+    chart_type = models.CharField(max_length=100)
+    chart_title = models.CharField(max_length=100)
+
+    x_axis = models.CharField(max_length=100)
+    x_axis_min = models.IntegerField(null=True)
+    x_axis_max = models.IntegerField(null=True)
+
+    y_axis = models.CharField(max_length=100)
+    y_axis_min = models.IntegerField(null=True)
+    y_axis_max = models.IntegerField(null=True)
+
+    legend = models.BooleanField(default=True)
+
+    pie_hole = models.FloatField(null=True)
+
+
+
