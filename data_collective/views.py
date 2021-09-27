@@ -36,7 +36,8 @@ class CitizenLogin(generics.ListAPIView):
     
     def get_queryset(self):
         name = self.kwargs['name']
-        password = self.kwargs['password']
+        password = self.request.META['mypassword']
+
         match = Citizen.objects.filter(name=name)
         if (match[0].password == password):
             return match
