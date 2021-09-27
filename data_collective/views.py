@@ -85,3 +85,10 @@ class DataVisList(generics.ListCreateAPIView):
 class DataVisDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = DataVis.objects.all()
     serializer_class = DataVisSerializer
+
+class ProjectDataVis(generics.ListAPIView):
+    serializer_class = DataVisSerializer
+
+    def get_queryset(self):
+        id = self.kwargs['id']
+        return DataVis.objects.filter(project=id)
