@@ -1,7 +1,7 @@
 from django.db.models import manager
 from rest_framework import filters, generics
-from .models import Citizen, Project, Form, DataEntry
-from .serializers import CitizenSerializer, ProjectSerializer, FormSerializer, DataEntrySerializer
+from .models import Citizen, Project, Form, DataEntry, DataVis
+from .serializers import CitizenSerializer, ProjectSerializer, FormSerializer, DataEntrySerializer, DataVisSerializer
 
 # View Classes
 class CitizenList(generics.ListCreateAPIView):
@@ -85,3 +85,11 @@ class FormGrab(generics.ListAPIView):
     def get_queryset(self):
         id = self.kwargs['id']
         return Form.objects.filter(project=id)
+
+class DataVisList(generics.ListAPIView):
+    queryset = DataVis.objects.all()
+    serializer_class = DataVisSerializer
+
+class DataVisDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = DataVis.objects.all()
+    serializer_class = DataVisSerializer
