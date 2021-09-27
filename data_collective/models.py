@@ -123,7 +123,7 @@ class DataVis(models.Model):
     contributor = models.ForeignKey(Citizen, on_delete=models.DO_NOTHING, related_name='citizen')
 
     chart_type = models.CharField(max_length=100)
-    chart_title = models.CharField(max_length=100)
+    chart_title = models.CharField(max_length=150)
 
     x_axis = models.CharField(max_length=100)
     x_axis_min = models.IntegerField(null=True)
@@ -136,6 +136,9 @@ class DataVis(models.Model):
     legend = models.BooleanField(default=True)
 
     pie_hole = models.FloatField(null=True)
+
+    def __str__(self):
+        return self.chart_title
 
 
 

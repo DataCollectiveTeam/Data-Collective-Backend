@@ -85,7 +85,7 @@ class FormGrab(generics.ListAPIView):
         id = self.kwargs['id']
         return Form.objects.filter(project=id)
 
-class DataVisList(generics.ListAPIView):
+class DataVisList(generics.ListCreateAPIView):
     queryset = DataVis.objects.all()
     serializer_class = DataVisSerializer
 
