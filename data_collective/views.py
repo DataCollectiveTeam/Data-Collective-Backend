@@ -76,7 +76,7 @@ class FormGrab(generics.ListAPIView):
 
     def get_queryset(self):
         id = self.kwargs['id']
-        return Form.objects.filter(project=id)
+        return Form.objects.get(project=id)
 
 class DataVisList(generics.ListCreateAPIView):
     queryset = DataVis.objects.all()
