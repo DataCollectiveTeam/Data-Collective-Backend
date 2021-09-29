@@ -29,4 +29,4 @@ class DataVisSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('project', 'author', 'title', 'body', 'pinned', 'date_posted')
+        fields = ('id','project', 'author', 'username', 'title', 'body', 'pinned', 'date_posted')

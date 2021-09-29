@@ -143,6 +143,7 @@ class DataVis(models.Model):
 class Post(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='discussions')
     author = models.ForeignKey(Citizen, on_delete=models.DO_NOTHING, related_name='posts')
+    username = models.CharField(max_length=40)
 
     title = models.CharField(max_length=150)
     body = models.TextField(max_length=500)

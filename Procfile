@@ -1,0 +1,1 @@
+web: gunicorn data_collective_django.wsgi
