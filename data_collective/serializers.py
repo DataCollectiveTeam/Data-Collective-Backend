@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Citizen, Project, Form, DataEntry, DataVis
+from .models import Citizen, Project, Form, DataEntry, DataVis, Post
 
 class CitizenSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,3 +25,8 @@ class DataVisSerializer(serializers.ModelSerializer):
     class Meta:
         model = DataVis
         fields = ('id', 'project', 'contributor', 'chart_type', 'chart_title', 'x_axis', 'x_axis_min', 'x_axis_max', 'y_axis', 'y_axis_min', 'y_axis_max', 'legend', 'pie_hole')
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ('project', 'author', 'title', 'body', 'pinned', 'date_posted')

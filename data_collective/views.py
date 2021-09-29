@@ -1,7 +1,7 @@
 from django.db.models import manager
 from rest_framework import filters, generics
-from .models import Citizen, Project, Form, DataEntry, DataVis
-from .serializers import CitizenSerializer, ProjectSerializer, FormSerializer, DataEntrySerializer, DataVisSerializer
+from .models import Citizen, Project, Form, DataEntry, DataVis, Post
+from .serializers import CitizenSerializer, ProjectSerializer, FormSerializer, DataEntrySerializer, DataVisSerializer, PostSerializer
 
 # View Classes
 class CitizenList(generics.ListCreateAPIView):
@@ -92,3 +92,25 @@ class ProjectDataVis(generics.ListAPIView):
     def get_queryset(self):
         id = self.kwargs['id']
         return DataVis.objects.filter(project=id)
+
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class ProjectPosts(generics.ListAPIView):
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        id = self.kwargs['id']
+        return Post.objects.filter(project=id, pinned=False)
+
+class PinnedProjectPosts(generics.ListAPIView):
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        id = self.kwargs['id']
+        return Post.objects.filter(project=id, pinned=True)

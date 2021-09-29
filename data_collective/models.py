@@ -111,7 +111,7 @@ class DataEntry(models.Model):
     
     lat = models.DecimalField(null=True, max_digits=9, decimal_places=6)
     lon = models.DecimalField(null=True, max_digits=9, decimal_places=6)
-    zipcode = models.IntegerField(null=True)
+    zipcode = models.CharField(max_length=10, blank=True, default='')
 
     date_created = models.DateTimeField(default=datetime.now, blank=True)
 
@@ -140,5 +140,18 @@ class DataVis(models.Model):
     def __str__(self):
         return self.chart_title
 
+class Post(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='discussions')
+    author = models.ForeignKey(Citizen, on_delete=models.DO_NOTHING, related_name='posts')
+
+    title = models.CharField(max_length=150)
+    body = models.TextField(max_length=500)
+
+    pinned = models.BooleanField(default=False)
+
+    date_posted = models.DateTimeField(default=datetime.now, blank=True)
+
+    def __str__(self):
+        return self.title
 
 

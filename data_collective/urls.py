@@ -23,5 +23,10 @@ urlpatterns = [
 
     path('data_vis/', views.DataVisList.as_view(), name='data_vis_list'),
     path('data_vis/<int:pk>', views.DataVisDetail.as_view(), name='data_vis_detail'),  
-    path('project_data_vis/<int:id>', views.ProjectDataVis.as_view(), name='project_data_vis'),  
+    path('project_data_vis/<int:id>', views.ProjectDataVis.as_view(), name='project_data_vis'), 
+
+    path('posts/', views.PostList.as_view(), name='post_list'),
+    path('posts/<int:pk>', views.PostDetail.as_view(), name='post_detail'),  
+    path('project_posts/<int:id>', views.ProjectPosts.as_view(), name='project_posts'),
+    path('pinned_posts/<int:id>', views.PinnedProjectPosts.as_view(), name='pinned_project_posts'),
 ]
