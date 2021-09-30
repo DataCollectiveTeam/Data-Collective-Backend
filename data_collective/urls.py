@@ -19,7 +19,7 @@ urlpatterns = [
     
     path('forms/', views.FormList.as_view(), name='form_list'),
     path('forms/<int:pk>', views.FormDetail.as_view(), name='form_detail'),
-    path('formgrab/<str:id>', views.FormGrab.as_view(), name='form_grab'),
+    path('formgrab/<int:id>', views.FormGrab.as_view(), name='form_grab'),
 
     path('data_vis/', views.DataVisList.as_view(), name='data_vis_list'),
     path('data_vis/<int:pk>', views.DataVisDetail.as_view(), name='data_vis_detail'),  
