@@ -24,7 +24,7 @@ class DataEntrySerializer(serializers.ModelSerializer):
 class DataVisSerializer(serializers.ModelSerializer):
     class Meta:
         model = DataVis
-        fields = ('id', 'project', 'contributor', 'chart_type', 'chart_title', 'x_axis', 'x_axis_min', 'x_axis_max', 'y_axis', 'y_axis_min', 'y_axis_max', 'legend', 'pie_hole')
+        fields = ('id', 'project', 'contributor', 'chart_type', 'chart_title', 'x_axis', 'y_axis', 'legend')
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
