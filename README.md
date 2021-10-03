@@ -1,1 +1,1 @@
-### Backend for [DataCollective](https://github.com/DataCollectiveTeam/Data-Collective)
+### Backend for [Data Collective](https://github.com/DataCollectiveTeam/Data-Collective)
